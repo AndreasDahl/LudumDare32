@@ -3,15 +3,17 @@ using System.Collections;
 
 public class WalkerAI : MonoBehaviour {
     public GameObject effect;
+    public GameObject pickUp;
     public int direction = -1;
 	// Use this for initialization
 	void Start () {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+    void FixedUpdate()
+    {
         if (direction * GetComponent<Rigidbody2D>().velocity.x < 1)
-            GetComponent<Rigidbody2D>().AddForce(Vector2.right * direction * 1f * 200);
+            GetComponent<Rigidbody2D>().AddForce(Vector2.right * direction * 3f * 200);
 	}
 
     public void doEffect()
@@ -24,5 +26,10 @@ public class WalkerAI : MonoBehaviour {
     public void flip()
     {
         direction *= -1;
+    }
+
+    public void death()
+    {
+        Instantiate(pickUp, this.gameObject.transform.position, Quaternion.identity);
     }
 }

@@ -15,6 +15,7 @@ public class Beam : Weapon {
         if (other.gameObject.tag == "Enemy")
         {
             other.gameObject.GetComponent<WalkerAI>().doEffect();
+            other.gameObject.GetComponent<WalkerAI>().death();
 			Destroy(other.gameObject);
 		}
 	}

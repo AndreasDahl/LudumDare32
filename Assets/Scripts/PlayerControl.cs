@@ -100,5 +100,11 @@ public class PlayerControl : MonoBehaviour, Timer.TimerCallback
         {
             Application.LoadLevel("level1");
         }
+        else if (other.collider.gameObject.name == "BoostPowerUp(Clone)")
+        {
+            weapons[1] = other.gameObject;
+            weapons[6] = other.gameObject;
+            other.gameObject.SetActive(false);
+        }
     }
 }
