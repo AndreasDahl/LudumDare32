@@ -9,8 +9,8 @@ public class Timer : MonoBehaviour {
     public Text uiTimer;
     public Circle circle;
     public int currentTrigger;
-    public float step;
-
+    public float step, gameTick;
+    public AudioSource audioPlayer;
     private List<TimerCallback> callbacks;
     private bool displayCircle;
 
@@ -43,6 +43,13 @@ public class Timer : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         step += Time.deltaTime;
+        gameTick += Time.deltaTime;
+
+        if (gameTick >= 0.50f && !(step >= 1.0f))
+        {
+            audioPlayer.Play();
+            gameTick -= 0.50f;
+        }
         if (step >= 1.0f) 
         {
             increment();    
