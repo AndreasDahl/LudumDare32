@@ -17,6 +17,8 @@ public class PlayerControl : MonoBehaviour, Timer.TimerCallback
 
     public Timer timer;
 
+    public Weapon[] weapons = new Weapon[Timer.STAGES];
+
     void Awake()
     {
         timer.addCallback(this);
@@ -73,10 +75,11 @@ public class PlayerControl : MonoBehaviour, Timer.TimerCallback
 
     bool Timer.TimerCallback.onTime(int i)
     {
-        if (i == 2) {
-			jump = true;
+        if (weapons[i] != null)
+        {
+            weapons[i].fire(this.gameObject);
             return true;
-		}
+        }
         return false;
     }
 }

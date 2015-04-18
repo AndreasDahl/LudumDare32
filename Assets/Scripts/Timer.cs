@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 
 public class Timer : MonoBehaviour {
-    public int MAX_TRIGGER = 9;
+    public static int STAGES = 10;
     
     public Text uiTimer;
     public Circle circle;
@@ -18,7 +18,7 @@ public class Timer : MonoBehaviour {
     {
         currentTrigger += 1;
         step -= 1;
-        if (currentTrigger > MAX_TRIGGER)
+        if (currentTrigger >= STAGES)
         {
             currentTrigger = 0;
         }
@@ -48,7 +48,7 @@ public class Timer : MonoBehaviour {
             increment();    
         }
         if (displayCircle)
-            circle.radius = 44 * step;
+            circle.radius = 64 * step;
 	}
 
     public void addCallback(TimerCallback callback)
