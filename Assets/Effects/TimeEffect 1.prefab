@@ -1,40 +1,40 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &170462
+--- !u!1 &191640
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 473030}
-  - 120: {fileID: 12097816}
-  - 114: {fileID: 11475978}
+  - 4: {fileID: 485756}
+  - 120: {fileID: 12044060}
+  - 114: {fileID: 11435704}
   m_Layer: 0
-  m_Name: TimeEffect
+  m_Name: TimeEffect 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &473030
+--- !u!4 &485756
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 170462}
+  m_GameObject: {fileID: 191640}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -34.2000008, y: 14.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!114 &11475978
+--- !u!114 &11435704
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 170462}
+  m_GameObject: {fileID: 191640}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8c3008a8db7ce484b9631d31a1458a86, type: 3}
@@ -45,12 +45,12 @@ MonoBehaviour:
   step: 0
   expandCircle: 0
   doDestroyObject: 0
---- !u!120 &12097816
+--- !u!120 &12044060
 LineRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 170462}
+  m_GameObject: {fileID: 191640}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -91,5 +91,5 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 170462}
+  m_RootGameObject: {fileID: 191640}
   m_IsPrefabParent: 1

@@ -25,5 +25,6 @@ public class WalkerAI : MonoBehaviour {
     {
         GameObject go = (GameObject) Instantiate(effect, this.gameObject.transform.position, Quaternion.identity);
         go.GetComponent<Circle>().doExpand();
+        go.GetComponent<Circle>().doDestroy();
     }
 }

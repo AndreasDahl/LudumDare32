@@ -7,7 +7,9 @@ public class Circle : MonoBehaviour
     public float radius;
     LineRenderer line;
     public float step;
-    public bool expandCircle;
+    public bool expandCircle, doDestroyObject;
+    private const float LIFETIME = 1.0f;
+    private static float lifetime;
 
     void Start()
     {
@@ -24,6 +26,17 @@ public class Circle : MonoBehaviour
         {
             step += Time.deltaTime;
             radius = 64 * step;
+        }
+        if (doDestroyObject)
+        {
+            if (lifetime > 0f)
+            {
+                lifetime -= Time.deltaTime;
+                if (lifetime <= 0)
+                {
+                    Destroy(this.gameObject);
+                }
+            }
         }
     }
 
@@ -48,6 +61,12 @@ public class Circle : MonoBehaviour
 
     public void doExpand()
     {
+        lifetime = LIFETIME;
         expandCircle = true;
+    }
+
+    public void doDestroy()
+    {
+        doDestroyObject = true;
     }
 }
