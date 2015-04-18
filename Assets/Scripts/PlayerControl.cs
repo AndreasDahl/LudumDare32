@@ -37,26 +37,36 @@ public class PlayerControl : MonoBehaviour, Timer.TimerCallback
 	{
 		// Cache the horizontal input.
 		float h = Input.GetAxis("Horizontal");
+        if (jump)
+        {
+            // Add a vertical force to the player.
+            GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, jumpForce));
 
-		// If the player is changing direction (h has a different sign to velocity.x) or hasn't reached maxSpeed yet...
-		if(h * GetComponent<Rigidbody2D>().velocity.x < maxSpeed)
-			// ... add a force to the player.
-			GetComponent<Rigidbody2D>().AddForce(Vector2.right * h * moveForce);
+            // Make sure the player can't jump again until the jump conditions from Update are satisfied.
+            jump = false;
+        }
+        if (h != -1 && h != 1 && h != 0)
+            h = 0;
+        if (h != 0)
+        {
 
-		// If the player's horizontal velocity is greater than the maxSpeed...
-		if(Mathf.Abs(GetComponent<Rigidbody2D>().velocity.x) > maxSpeed)
-			// ... set the player's velocity to the maxSpeed in the x axis.
-			GetComponent<Rigidbody2D>().velocity = new Vector2(Mathf.Sign(GetComponent<Rigidbody2D>().velocity.x) * maxSpeed, GetComponent<Rigidbody2D>().velocity.y);
+		    // If the player is changing direction (h has a different sign to velocity.x) or hasn't reached maxSpeed yet...
+		    if(h * GetComponent<Rigidbody2D>().velocity.x < maxSpeed)
+			    // ... add a force to the player.
+			    GetComponent<Rigidbody2D>().AddForce(Vector2.right * h * moveForce);
 
-		// If the player should jump...
-		if(jump)
-		{
-			// Add a vertical force to the player.
-			GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, jumpForce));
+		    // If the player's horizontal velocity is greater than the maxSpeed...
+		    if(Mathf.Abs(GetComponent<Rigidbody2D>().velocity.x) > maxSpeed)
+			    // ... set the player's velocity to the maxSpeed in the x axis.
+			    GetComponent<Rigidbody2D>().velocity = new Vector2(Mathf.Sign(GetComponent<Rigidbody2D>().velocity.x) * maxSpeed, GetComponent<Rigidbody2D>().velocity.y);
 
-			// Make sure the player can't jump again until the jump conditions from Update are satisfied.
-			jump = false;
-		}
+		    // If the player should jump...
+
+        }
+        else if(grounded)
+        {
+            GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+        }
 	}
 
     void Timer.TimerCallback.onTime(int i)
