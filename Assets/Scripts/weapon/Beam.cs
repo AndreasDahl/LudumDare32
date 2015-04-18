@@ -15,8 +15,8 @@ public class Beam : Weapon {
         if (other.gameObject.tag == "Enemy")
         {
             other.gameObject.GetComponent<WalkerAI>().doEffect();
-		    Destroy(other.gameObject);
-        }
+			Destroy(other.gameObject);
+		}
 	}
 	
 	override public void fire(GameObject owner)
