@@ -3,7 +3,9 @@ using System.Collections;
 
 public class Boost : Weapon {
     public AudioClip weaponSound;
+
 	public float Velocity = 40f;
+    public AudioClip pickUpSound;
     private string name = "Boost";
 	override public void fire(GameObject owner)
 	{
@@ -28,4 +30,9 @@ public class Boost : Weapon {
         return name;
     }
 
+
+    public override AudioClip getPickUpAudioclip()
+    {
+        return pickUpSound;
+    }
 }

@@ -6,6 +6,7 @@ public class Burst : Weapon {
 	public float growth = 0.2f;
 	public float lifetime = 0.3f;
 	public AudioClip weaponSound;
+    public AudioClip pickUpSound;
 	private static float lifetimeLeft;
 
 	void OnTriggerStay2D(Collider2D other)
@@ -49,5 +50,10 @@ public class Burst : Weapon {
     public override string getAbilityName()
     {
         return name;
+    }
+
+    public override AudioClip getPickUpAudioclip()
+    {
+        return pickUpSound;
     }
 }

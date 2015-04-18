@@ -10,13 +10,18 @@ public class PlayerControl : MonoBehaviour, Timer.TimerCallback
 	public float maxSpeed = 6f;				// The fastest the player can travel in the x axis.
 	public float jumpForce = 1000f;			// Amount of force added when the player jumps.
 	public Transform groundCheck;			// A position marking where to check if the player is grounded.
-	private bool grounded = false;			// Whether or not the player is grounded.
+    private bool grounded = false, hasPlayed;			// Whether or not the player is grounded.
     public Timer timer;
     public GameObject[] weapons = new GameObject[Timer.STAGES];
     public AudioSource audioPlayer;
+    public AudioClip goalSound;
     public Image GrooveBar;
+    private string currentLevel = "level1";
 
-
+    void Start(){
+        this.gameObject.SetActive(true);
+        hasPlayed = false;
+    }
     void Awake()
     {
         timer.addCallback(this);
@@ -28,6 +33,8 @@ public class PlayerControl : MonoBehaviour, Timer.TimerCallback
 
 	void Update()
 	{
+        if (hasPlayed && !(audioPlayer.isPlaying))
+            Application.LoadLevel(currentLevel);
 		// The player is grounded if a linecast to the groundcheck position hits anything on the ground layer.
 		grounded = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Ground"));  
 
@@ -67,8 +74,12 @@ public class PlayerControl : MonoBehaviour, Timer.TimerCallback
         }
         else if(grounded)
         {
-            GrooveBar.fillAmount -= 0.001f;
             GetComponent<Rigidbody2D>().velocity = new Vector2(0f, GetComponent<Rigidbody2D>().velocity.y);
+            GrooveBar.fillAmount -= 0.005f;
+            if (GrooveBar.fillAmount <= 0)
+            {
+                Application.LoadLevel(currentLevel);
+            }
         }
 	}
 
@@ -98,13 +109,20 @@ public class PlayerControl : MonoBehaviour, Timer.TimerCallback
     {
         if (other.collider.gameObject.name == "Walker")
         {
-            Application.LoadLevel("level1");
+            Application.LoadLevel(currentLevel);
         }
         else if (other.collider.gameObject.name == "BoostPowerUp(Clone)")
         {
             weapons[1] = other.gameObject;
             weapons[6] = other.gameObject;
+            audioPlayer.PlayOneShot(other.gameObject.GetComponent<Weapon>().getPickUpAudioclip());
             other.gameObject.SetActive(false);
+        }
+        else if (other.collider.gameObject.name == "Goal")
+        {
+            audioPlayer.PlayOneShot(goalSound);
+            currentLevel = other.gameObject.GetComponent<goal>().getNextLevel();
+            hasPlayed = true;
         }
     }
 }
