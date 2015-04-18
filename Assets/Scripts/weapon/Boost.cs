@@ -14,4 +14,9 @@ public class Boost : Weapon {
 		return new Color (0f, 1f, 0f);
 	}
 
+	override public AudioClip getAudioclip()
+	{
+		return null;
+	}
+
 }

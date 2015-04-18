@@ -40,7 +40,7 @@ public class Beam : Weapon {
 		}
 	}
 
-    AudioClip Weapon.getAudioclip()
+    override public AudioClip getAudioclip()
     {
         return weaponSound;
     }
