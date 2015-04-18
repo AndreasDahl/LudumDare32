@@ -1,7 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public interface Weapon
+public abstract class Weapon : MonoBehaviour
 {
-    void fire(GameObject owner);
+	virtual public void fire(GameObject owner) {
+		owner.GetComponent<PlayerControl> ().timer.circle.setColor(getPulseColor ());
+	}
+
+	public abstract Color getPulseColor();
 }

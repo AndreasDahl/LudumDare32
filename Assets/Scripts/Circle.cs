@@ -16,6 +16,7 @@ public class Circle : MonoBehaviour
         line = gameObject.GetComponent<LineRenderer>();
 
         line.SetVertexCount(segments + 1);
+		line.material = new Material (Shader.Find("Particles/Additive"));
         CreatePoints();
     }
 
@@ -64,6 +65,11 @@ public class Circle : MonoBehaviour
         lifetime = LIFETIME;
         expandCircle = true;
     }
+
+	public void setColor(Color color) {
+		Debug.Log ("SetColor: " + color.ToString());
+		line.SetColors (color, color);
+	}
 
     public void doDestroy()
     {
