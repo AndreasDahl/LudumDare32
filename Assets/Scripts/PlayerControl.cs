@@ -22,6 +22,10 @@ public class PlayerControl : MonoBehaviour, Timer.TimerCallback
         timer.addCallback(this);
     }
 
+	void OnDestroy() {
+		timer.removeCallback (this);
+	}
+
 	void Update()
 	{
 		// The player is grounded if a linecast to the groundcheck position hits anything on the ground layer.
@@ -61,9 +65,9 @@ public class PlayerControl : MonoBehaviour, Timer.TimerCallback
 
     void Timer.TimerCallback.onTime(int i)
     {
-        if (i == 2)
-        {
-            jump = true;
-        } 
+        if (i == 2) {
+			jump = true;
+		}
+
     }
 }
