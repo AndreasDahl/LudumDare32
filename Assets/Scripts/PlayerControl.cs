@@ -17,7 +17,7 @@ public class PlayerControl : MonoBehaviour, Timer.TimerCallback
 
     public Timer timer;
 
-    public Weapon[] weapons = new Weapon[Timer.STAGES];
+    public GameObject[] weapons = new GameObject[Timer.STAGES];
 
     void Awake()
     {
@@ -77,7 +77,7 @@ public class PlayerControl : MonoBehaviour, Timer.TimerCallback
     {
         if (weapons[i] != null)
         {
-            weapons[i].fire(this.gameObject);
+            weapons[i].GetComponent<Weapon>().fire(this.gameObject);
             return true;
         }
         return false;
