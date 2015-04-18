@@ -48,11 +48,11 @@ public class Timer : MonoBehaviour {
 
         if (gameTick >= 0.50f && !(step >= 1.0f))
         {
-//            if (!playing)
-//            {
+            if (!playing)
+            {
                 audioPlayer.Play();
-//                playing = true;
-//            }
+                playing = true;
+            }
             gameTick -= 0.50f;
         }
         if (step >= 1.0f) 
