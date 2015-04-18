@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class WalkerAI : MonoBehaviour {
-
+    public GameObject effect;
 	// Use this for initialization
 	void Start () {
 
@@ -19,5 +19,11 @@ public class WalkerAI : MonoBehaviour {
         {
             Application.LoadLevel("level1");
         }
+    }
+
+    public void doEffect()
+    {
+        GameObject go = (GameObject) Instantiate(effect, this.gameObject.transform.position, Quaternion.identity);
+        go.GetComponent<Circle>().doExpand();
     }
 }
