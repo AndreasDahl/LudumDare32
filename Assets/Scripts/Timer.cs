@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class Timer : MonoBehaviour {
     public static int STAGES = 10;
     
+	public float speedMultiplier = 1f;
     public Text uiTimer;
     public Text nextAbility;
     public Circle circle;
@@ -42,16 +43,16 @@ public class Timer : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        step += Time.deltaTime;
-        gameTick += Time.deltaTime;
+        step += Time.deltaTime * speedMultiplier;
+        gameTick += Time.deltaTime * speedMultiplier;
 
         if (gameTick >= 0.50f && !(step >= 1.0f))
         {
-            if (!playing)
-            {
+//            if (!playing)
+//            {
                 audioPlayer.Play();
-                playing = true;
-            }
+//                playing = true;
+//            }
             gameTick -= 0.50f;
         }
         if (step >= 1.0f) 
