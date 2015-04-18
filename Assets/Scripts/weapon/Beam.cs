@@ -1,10 +1,12 @@
 using UnityEngine;
 using System.Collections;
 
-public class Beam :MonoBehaviour, Weapon {
-	private const float LIFETIME = 1.0f;
+public class Beam : MonoBehaviour, Weapon {
+	private const float LIFETIME = 0.44f;
 	
 	private static float lifetime;
+
+    public AudioClip weaponSound;
 	
 	void OnTriggerStay2D(Collider2D other)
 	{
@@ -31,4 +33,9 @@ public class Beam :MonoBehaviour, Weapon {
 				Destroy(this.gameObject);
 		}
 	}
+
+    AudioClip Weapon.getAudioclip()
+    {
+        return weaponSound;
+    }
 }
