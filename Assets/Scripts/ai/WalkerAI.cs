@@ -10,11 +10,14 @@ public class WalkerAI : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		this.transform.position += new Vector3 (-0.1f, 0.0f, 0.0f);
+		this.transform.position += new Vector3 (-0.05f, 0.0f, 0.0f);
 	}
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("collision");
+        if (other.name == "Cube")
+        {
+            Application.LoadLevel("level1");
+        }
     }
 }
