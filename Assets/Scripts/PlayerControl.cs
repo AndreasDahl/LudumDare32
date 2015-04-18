@@ -19,6 +19,8 @@ public class PlayerControl : MonoBehaviour, Timer.TimerCallback
 
     public GameObject[] weapons = new GameObject[Timer.STAGES];
 
+    public AudioSource audioPlayer;
+
     void Awake()
     {
         timer.addCallback(this);
@@ -78,6 +80,7 @@ public class PlayerControl : MonoBehaviour, Timer.TimerCallback
         if (weapons[i] != null)
         {
             weapons[i].GetComponent<Weapon>().fire(this.gameObject);
+            audioPlayer.PlayOneShot(weapons[i].GetComponent<Weapon>().getAudioclip());
             return true;
         }
         return false;

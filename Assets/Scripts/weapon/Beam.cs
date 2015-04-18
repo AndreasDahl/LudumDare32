@@ -2,9 +2,11 @@ using UnityEngine;
 using System.Collections;
 
 public class Beam : Weapon {
-	private const float LIFETIME = 1.0f;
+	private const float LIFETIME = 0.44f;
 	
 	private static float lifetime;
+
+    public AudioClip weaponSound;
 	
 	void OnTriggerStay2D(Collider2D other)
 	{
@@ -37,4 +39,9 @@ public class Beam : Weapon {
 				Destroy(this.gameObject);
 		}
 	}
+
+    AudioClip Weapon.getAudioclip()
+    {
+        return weaponSound;
+    }
 }
