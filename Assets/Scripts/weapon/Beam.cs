@@ -7,6 +7,7 @@ public class Beam : Weapon {
 	private static float lifetime;
 
     public AudioClip weaponSound;
+    public AudioClip pickUpSound;
 
     private string name = "Beam";
 	
@@ -51,5 +52,10 @@ public class Beam : Weapon {
     override public string getAbilityName()
     {
         return name;
+    }
+
+    public override AudioClip getPickUpAudioclip()
+    {
+        return pickUpSound;
     }
 }

@@ -2,10 +2,18 @@
 using System.Collections;
 
 public class MainMenu : MonoBehaviour {
+    public AudioSource audio;
+    private bool hasPlayed = false;
 
-
-    public void startGame()
+    void Update()
     {
-        Application.LoadLevel("level1");
+        if (hasPlayed && !(audio.isPlaying))
+            Application.LoadLevel("level1");
+    }
+
+    public void playAudio()
+    {
+        audio.Play();
+        hasPlayed = true;
     }
 }
