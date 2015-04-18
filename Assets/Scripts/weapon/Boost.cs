@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class Boost : Weapon {
-
+    public AudioClip weaponSound;
 	override public void fire(GameObject owner)
 	{
 		base.fire (owner);
@@ -16,7 +16,9 @@ public class Boost : Weapon {
 
 	override public AudioClip getAudioclip()
 	{
-		return null;
+        return weaponSound;
 	}
+
+
 
 }

@@ -67,7 +67,6 @@ public class Circle : MonoBehaviour
     }
 
 	public void setColor(Color color) {
-		Debug.Log ("SetColor: " + color.ToString());
 		line.SetColors (color, color);
 	}
 

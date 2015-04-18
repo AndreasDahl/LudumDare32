@@ -96,6 +96,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 76156646}
   - 114: {fileID: 76156647}
+  - 82: {fileID: 76156648}
   m_Layer: 0
   m_Name: _Scripts
   m_TagString: Untagged
@@ -130,6 +131,77 @@ MonoBehaviour:
   circle: {fileID: 999023299}
   currentTrigger: 0
   step: 0
+  gameTick: 0
+  audioPlayer: {fileID: 76156648}
+--- !u!82 &76156648
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 76156645}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: b1b01b9373ce51044ae7f093364d89ff, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1.5
+  Loop: 0
+  Mute: 0
+  Priority: 256
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!1 &156801721
 GameObject:
   m_ObjectHideFlags: 0
@@ -557,7 +629,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 401796, guid: 244638b542c82424c95d4715877237a4, type: 2}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 161602, guid: 244638b542c82424c95d4715877237a4, type: 2}
       propertyPath: m_Name
@@ -671,7 +743,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 144618, guid: f0693433eab81406686333a0e482f480, type: 2}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -1081,7 +1153,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 401796, guid: 244638b542c82424c95d4715877237a4, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 244638b542c82424c95d4715877237a4, type: 2}
