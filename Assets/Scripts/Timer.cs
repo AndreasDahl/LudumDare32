@@ -7,10 +7,12 @@ public class Timer : MonoBehaviour {
     public int MAX_TRIGGER = 9;
     
     public Text uiTimer;
+    public Circle circle;
     public int currentTrigger;
     public float step;
 
     private List<TimerCallback> callbacks;
+    private bool displayCircle;
 
     private void increment()
     {
@@ -22,10 +24,14 @@ public class Timer : MonoBehaviour {
         }
  
         uiTimer.text = currentTrigger.ToString();
+        displayCircle = false;
         foreach (TimerCallback callback in callbacks)
         {
-            callback.onTime(currentTrigger);
+            displayCircle = callback.onTime(currentTrigger);
+            
         }
+
+
     }
 
 	// Use this for initialization
@@ -41,6 +47,8 @@ public class Timer : MonoBehaviour {
         {
             increment();    
         }
+        if (displayCircle)
+            circle.radius = 44 * step;
 	}
 
     public void addCallback(TimerCallback callback)
@@ -55,6 +63,6 @@ public class Timer : MonoBehaviour {
 
     public interface TimerCallback
     {
-        void onTime(int i); 
+        bool onTime(int i); 
     }
 }

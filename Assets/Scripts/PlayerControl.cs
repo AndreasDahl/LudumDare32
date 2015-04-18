@@ -71,11 +71,12 @@ public class PlayerControl : MonoBehaviour, Timer.TimerCallback
         }
 	}
 
-    void Timer.TimerCallback.onTime(int i)
+    bool Timer.TimerCallback.onTime(int i)
     {
         if (i == 2) {
 			jump = true;
+            return true;
 		}
-
+        return false;
     }
 }
