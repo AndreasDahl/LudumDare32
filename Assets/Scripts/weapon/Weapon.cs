@@ -9,5 +9,5 @@ public abstract class Weapon : MonoBehaviour
 
 	public abstract Color getPulseColor();
 
-    AudioClip getAudioclip();
+    public abstract AudioClip getAudioclip();
 }
