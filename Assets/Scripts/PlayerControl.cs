@@ -17,13 +17,11 @@ public class PlayerControl : MonoBehaviour, Timer.TimerCallback
     public AudioClip goalSound;
     public Image GrooveBar;
     private string currentLevel = "level1";
+    private float nextLevelDelay = 1f, nextLevelDelayStart = 0f;
 
     void Start(){
         this.gameObject.SetActive(true);
         hasPlayed = false;
-    }
-    void Awake()
-    {
         timer.addCallback(this);
     }
 
@@ -33,8 +31,13 @@ public class PlayerControl : MonoBehaviour, Timer.TimerCallback
 
 	void Update()
 	{
-        if (hasPlayed && !(audioPlayer.isPlaying))
-            Application.LoadLevel(currentLevel);
+        if (hasPlayed){
+            nextLevelDelayStart += Time.deltaTime;
+            if (nextLevelDelayStart >= nextLevelDelay)
+            {
+                Application.LoadLevel(currentLevel);
+            }
+        }
 		// The player is grounded if a linecast to the groundcheck position hits anything on the ground layer.
 		grounded = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Ground"));  
 
