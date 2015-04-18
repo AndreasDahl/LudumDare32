@@ -10,4 +10,6 @@ public abstract class Weapon : MonoBehaviour
 	public abstract Color getPulseColor();
 
     public abstract AudioClip getAudioclip();
+
+    public abstract string getAbilityName();
 }

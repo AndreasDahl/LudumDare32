@@ -1,25 +1,21 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class PlayerControl : MonoBehaviour, Timer.TimerCallback
 {
 	[HideInInspector]
 	public bool jump = false;				// Condition for whether the player should jump.
-
-
 	public float moveForce = 365f;			// Amount of force added to move the player left and right.
 	public float maxSpeed = 5f;				// The fastest the player can travel in the x axis.
 	public float jumpForce = 1000f;			// Amount of force added when the player jumps.
-
-
 	public Transform groundCheck;			// A position marking where to check if the player is grounded.
 	private bool grounded = false;			// Whether or not the player is grounded.
-
     public Timer timer;
-
     public GameObject[] weapons = new GameObject[Timer.STAGES];
-
     public AudioSource audioPlayer;
+    public Image GrooveBar;
+
 
     void Awake()
     {
@@ -71,12 +67,24 @@ public class PlayerControl : MonoBehaviour, Timer.TimerCallback
         }
         else if(grounded)
         {
+            GrooveBar.fillAmount -= 0.001f;
             GetComponent<Rigidbody2D>().velocity = Vector3.zero;
         }
 	}
 
     bool Timer.TimerCallback.onTime(int i)
     {
+        int x = i+1;
+        if (x >= 10)
+            x -= 10;
+        if (weapons[x] != null)
+        {
+            timer.setAbilityText(weapons[x].GetComponent<Weapon>().getAbilityName(), weapons[x].GetComponent<Weapon>().getPulseColor());
+        }
+        else
+        {
+            timer.setAbilityText("", new Color());
+        }
         if (weapons[i] != null)
         {
             weapons[i].GetComponent<Weapon>().fire(this.gameObject);
@@ -84,5 +92,13 @@ public class PlayerControl : MonoBehaviour, Timer.TimerCallback
             return true;
         }
         return false;
+    }
+
+    void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.collider.gameObject.name == "Walker")
+        {
+            Application.LoadLevel("level1");
+        }
     }
 }

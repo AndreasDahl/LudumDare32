@@ -7,14 +7,16 @@ public class Beam : Weapon {
 	private static float lifetime;
 
     public AudioClip weaponSound;
+
+    private string name = "Beam";
 	
 	void OnTriggerStay2D(Collider2D other)
 	{
-        if (other.gameObject.name == "Walker")
+        if (other.gameObject.tag == "Enemy")
         {
             other.gameObject.GetComponent<WalkerAI>().doEffect();
+		    Destroy(other.gameObject);
         }
-		Destroy(other.gameObject);
 	}
 	
 	override public void fire(GameObject owner)
@@ -23,12 +25,12 @@ public class Beam : Weapon {
 
 		GameObject go =(GameObject) Instantiate(this.gameObject, owner.transform.position , Quaternion.identity);
 		go.transform.parent = owner.transform;
-		go.transform.position += new Vector3(25.30f, 0, 0);
+        go.transform.position += new Vector3(0, 0, 10f); //25.30f
 		lifetime = LIFETIME;
 	}
 
 	override public Color getPulseColor() {
-		return new Color (1f, 1f, 0f);
+        return new Color(1f, 1f, 0f, 2f);
 	}
 	
 	void Update()
@@ -43,5 +45,10 @@ public class Beam : Weapon {
     override public AudioClip getAudioclip()
     {
         return weaponSound;
+    }
+
+    override public string getAbilityName()
+    {
+        return name;
     }
 }

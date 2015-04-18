@@ -7,12 +7,13 @@ public class Timer : MonoBehaviour {
     public static int STAGES = 10;
     
     public Text uiTimer;
+    public Text nextAbility;
     public Circle circle;
     public int currentTrigger;
     public float step, gameTick;
     public AudioSource audioPlayer;
     private List<TimerCallback> callbacks;
-    private bool displayCircle;
+    private bool displayCircle, playing;
 
     private void increment()
     {
@@ -30,14 +31,13 @@ public class Timer : MonoBehaviour {
             displayCircle = callback.onTime(currentTrigger);
             
         }
-
-
     }
 
 	// Use this for initialization
 	void Awake () {
         uiTimer.text = "0";
         callbacks = new List<TimerCallback>();
+        playing = false;
 	}
 	
 	// Update is called once per frame
@@ -47,7 +47,11 @@ public class Timer : MonoBehaviour {
 
         if (gameTick >= 0.50f && !(step >= 1.0f))
         {
-            audioPlayer.Play();
+            if (!playing)
+            {
+                audioPlayer.Play();
+                playing = true;
+            }
             gameTick -= 0.50f;
         }
         if (step >= 1.0f) 
@@ -71,5 +75,11 @@ public class Timer : MonoBehaviour {
     public interface TimerCallback
     {
         bool onTime(int i); 
+    }
+
+    public void setAbilityText(string ability, Color color)
+    {
+        nextAbility.text = ability;
+        nextAbility.color = color;
     }
 }

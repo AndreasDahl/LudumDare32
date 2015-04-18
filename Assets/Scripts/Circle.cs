@@ -8,7 +8,7 @@ public class Circle : MonoBehaviour
     LineRenderer line;
     public float step;
     public bool expandCircle, doDestroyObject;
-    private const float LIFETIME = 1.0f;
+    public float LIFETIME = 1.0f;
     private static float lifetime;
 
     void Start()
@@ -16,7 +16,7 @@ public class Circle : MonoBehaviour
         line = gameObject.GetComponent<LineRenderer>();
 
         line.SetVertexCount(segments + 1);
-		line.material = new Material (Shader.Find("Particles/Additive"));
+        line.material = (Material) Resources.Load("rings");
         CreatePoints();
     }
 
@@ -62,7 +62,6 @@ public class Circle : MonoBehaviour
 
     public void doExpand()
     {
-        lifetime = LIFETIME;
         expandCircle = true;
     }
 
@@ -70,8 +69,9 @@ public class Circle : MonoBehaviour
 		line.SetColors (color, color);
 	}
 
-    public void doDestroy()
+    public void doDestroy(float lifetimeIn)
     {
+        lifetime = lifetimeIn;
         doDestroyObject = true;
     }
 }
