@@ -6,6 +6,8 @@ public class Circle : MonoBehaviour
     public int segments;
     public float radius;
     LineRenderer line;
+    public float step;
+    public bool expandCircle;
 
     void Start()
     {
@@ -18,6 +20,11 @@ public class Circle : MonoBehaviour
     void Update()
     {
         CreatePoints();
+        if (expandCircle)
+        {
+            step += Time.deltaTime;
+            radius = 64 * step;
+        }
     }
 
     void CreatePoints()
@@ -37,5 +44,10 @@ public class Circle : MonoBehaviour
             line.SetPosition(i, new Vector3(x, y, z));
             angle += (360f / segments);
         }
+    }
+
+    public void doExpand()
+    {
+        expandCircle = true;
     }
 }
