@@ -37,6 +37,7 @@ public class PlayerControl : MonoBehaviour, Timer.TimerCallback
 	{
 		// Cache the horizontal input.
 		float h = Input.GetAxis("Horizontal");
+		// If the player should jump...
         if (jump)
         {
             // Add a vertical force to the player.
@@ -59,9 +60,6 @@ public class PlayerControl : MonoBehaviour, Timer.TimerCallback
 		    if(Mathf.Abs(GetComponent<Rigidbody2D>().velocity.x) > maxSpeed)
 			    // ... set the player's velocity to the maxSpeed in the x axis.
 			    GetComponent<Rigidbody2D>().velocity = new Vector2(Mathf.Sign(GetComponent<Rigidbody2D>().velocity.x) * maxSpeed, GetComponent<Rigidbody2D>().velocity.y);
-
-		    // If the player should jump...
-
         }
         else if(grounded)
         {
