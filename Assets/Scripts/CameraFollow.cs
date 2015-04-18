@@ -30,11 +30,10 @@ public class CameraFollow : MonoBehaviour
 	}
 
 
-	void FixedUpdate ()
+	void Update ()
 	{
 		TrackPlayer();
-        Debug.Log(Camera.transform.position);
-        Debug.Log(player.position);
+
 	}
 	 
 	
