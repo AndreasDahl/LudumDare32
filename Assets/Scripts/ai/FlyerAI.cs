@@ -10,8 +10,7 @@ public class FlyerAI : MonoBehaviour, EnemyInterface
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (direction * GetComponent<Rigidbody2D>().velocity.x < 1)
-            GetComponent<Rigidbody2D>().AddForce(Vector2.up * direction * 0.1f * 50);
+        this.gameObject.transform.position += new Vector3(0f, 5 * Time.deltaTime*direction, 0f);
     }
 
     public void doEffect()

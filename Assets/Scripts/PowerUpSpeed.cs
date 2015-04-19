@@ -5,8 +5,11 @@ public class PowerUpSpeed : MonoBehaviour {
 
 	void OnTriggerStay2D(Collider2D other)
 	{
-		Destroy (this.gameObject);
-		powerUp (other.gameObject);
+        if (other.gameObject.tag == "Player")
+        {
+		    Destroy (this.gameObject);
+		    powerUp (other.gameObject);
+        }
 	}
 	
 	private void powerUp(GameObject target) {
