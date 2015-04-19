@@ -160,11 +160,13 @@ public class PlayerControl : MonoBehaviour, Timer.TimerCallback
         }
         else if (other.collider.gameObject.tag == "PowerUp")
         {
-            weapons[nextAbilityNr] = other.collider.gameObject;
+            weapons[nextAbilityNr] = (GameObject) Resources.Load(other.collider.gameObject.GetComponent<Weapon>().getAbilityObjectName());
             abilityQue.sprite = weapons[nextAbilityNr].GetComponent<Weapon>().getAbilityIcon();
             timer.setAbilityText(weapons[nextAbilityNr].GetComponent<Weapon>().getAbilityName(), weapons[nextAbilityNr].GetComponent<Weapon>().getPulseColor());
             abilityQueWheel[nextAbilityNr].sprite = weapons[nextAbilityNr].GetComponent<Weapon>().getAbilityIcon();
             audioPlayer.PlayOneShot(other.gameObject.GetComponent<Weapon>().getPickUpAudioclip());
+            weapons[nextAbilityNr].SetActive(true);
+            weapons[nextAbilityNr].GetComponent<Weapon>().enabled = true;
             other.gameObject.SetActive(false);
         }
         else if (other.collider.gameObject.name == "Goal")

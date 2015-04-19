@@ -46,4 +46,9 @@ public class Burst : Weapon {
     {
         return icon;
     }
+
+    public override string getAbilityObjectName()
+    {
+        return "BurstWeapon";
+    }
 }

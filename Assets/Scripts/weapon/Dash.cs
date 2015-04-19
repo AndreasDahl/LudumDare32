@@ -74,4 +74,9 @@ public class Dash : Weapon {
     {
         return icon;
     }
+
+    public override string getAbilityObjectName()
+    {
+        return "DashWeapon";
+    }
 }

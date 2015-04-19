@@ -15,4 +15,6 @@ public abstract class Weapon : MonoBehaviour
     public abstract string getAbilityName();
 
     public abstract Sprite getAbilityIcon();
+
+    public abstract string getAbilityObjectName();
 }

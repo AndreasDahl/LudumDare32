@@ -45,7 +45,7 @@ MonoBehaviour:
   Velocity: 40
   pickUpSound: {fileID: 8300000, guid: 4752da484a903f847bfbdfdd49bb686f, type: 3}
   icon: {fileID: 21300000, guid: 1540b8cbe7e3dc349aa5d0cf4ca9245f, type: 3}
-  lifeLeft: 0
+  lifeLeft: .219999999
   points: []
 --- !u!120 &12014136
 LineRenderer:

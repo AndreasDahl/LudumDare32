@@ -55,4 +55,9 @@ public class Beam : Weapon {
     {
         return icon;
     }
+
+    public override string getAbilityObjectName()
+    {
+        return "BeamObject";
+    }
 }

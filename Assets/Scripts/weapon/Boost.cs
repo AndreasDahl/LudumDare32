@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -71,5 +71,10 @@ public class Boost : Weapon {
     public override Sprite getAbilityIcon()
     {
         return icon;
+    }
+
+    public override string getAbilityObjectName()
+    {
+        return "BoostObject";
     }
 }
