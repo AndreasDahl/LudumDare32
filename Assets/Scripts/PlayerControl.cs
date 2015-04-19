@@ -26,6 +26,13 @@ public class PlayerControl : MonoBehaviour, Timer.TimerCallback
     int nextAbilityNr;
     public Text score;
     public int scoreInt = 0;
+	public Circle timerCircle;
+	private float timerProgress;
+
+	bool bounce {
+		get;
+		set;
+	}
 
     void Start(){
         this.gameObject.SetActive(true);
@@ -58,6 +65,17 @@ public class PlayerControl : MonoBehaviour, Timer.TimerCallback
 		// If the jump button is pressed and the player is grounded then the player should jump.
 		if(Input.GetButtonDown("Jump") && grounded)
 			jump = true;
+
+		// Awesome bounce effect!
+		if (bounce) {
+			bounce = false;
+			abilityQue.transform.localScale = new Vector3 (1.05f, 1.05f, 1f);
+		} else {
+			abilityQue.transform.localScale = new Vector3 (1f, 1f, 1f);
+		}
+
+		float radius = 64 * (1f - timerProgress);
+		timerCircle.radius = radius;
 	}
 
 
@@ -109,11 +127,13 @@ public class PlayerControl : MonoBehaviour, Timer.TimerCallback
         {
             abilityQue.sprite = weapons[nextAbilityNr].GetComponent<Weapon>().getAbilityIcon();
             timer.setAbilityText(weapons[nextAbilityNr].GetComponent<Weapon>().getAbilityName(), weapons[nextAbilityNr].GetComponent<Weapon>().getPulseColor());
-        }
+			timerCircle.setColor(weapons[nextAbilityNr].GetComponent<Weapon>().getPulseColor());
+		}
         else
         {
             abilityQue.sprite = defaultIcon;
             timer.setAbilityText("", new Color());
+			timerCircle.setColor(new Color(1f, 1f, 1f));
         }
         if (weapons[i] != null)
         {
@@ -121,8 +141,16 @@ public class PlayerControl : MonoBehaviour, Timer.TimerCallback
             audioPlayer.PlayOneShot(weapons[i].GetComponent<Weapon>().getAudioclip());
             return true;
         }
-        return false;
+		return false;
     }
+
+	void Timer.TimerCallback.onTick() {
+		bounce = true;
+	}
+
+	void Timer.TimerCallback.onUpdate(float progress) {
+		timerProgress = progress;
+	}
 
     void OnCollisionEnter2D(Collision2D other)
     {

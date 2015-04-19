@@ -8,29 +8,39 @@ public class Timer : MonoBehaviour {
     
 	public float speedMultiplier = 1f;
     public Text nextAbility;
-    public Circle circle;
-    public int currentTrigger;
+    public int currentTrigger = 0;
     public float step, gameTick;
     public AudioSource audioPlayer;
     private List<TimerCallback> callbacks;
-    private bool displayCircle, playing;
+    private bool playing;
 
     private void increment()
     {
         currentTrigger += 1;
-        step -= 1;
+        step -= 1f;
         if (currentTrigger >= STAGES)
         {
             currentTrigger = 0;
         }
  
-        displayCircle = false;
         foreach (TimerCallback callback in callbacks)
         {
-            displayCircle = callback.onTime(currentTrigger);
-            
+			callback.onTime(currentTrigger);
         }
     }
+
+	private void tick() {
+		if (!playing)
+		{
+			audioPlayer.Play();
+			playing = true;
+		}
+		gameTick -= 0.50f;
+
+		foreach (TimerCallback callback in callbacks) {
+			callback.onTick();
+		}
+	}
 
 	// Use this for initialization
 	void Awake () {
@@ -45,19 +55,16 @@ public class Timer : MonoBehaviour {
 
         if (gameTick >= 0.50f && !(step >= 1.0f))
         {
-            if (!playing)
-            {
-                audioPlayer.Play();
-                playing = true;
-            }
-            gameTick -= 0.50f;
+			tick ();
         }
         if (step >= 1.0f) 
         {
             increment();    
         }
-        if (displayCircle)
-            circle.radius = 64 * step;
+
+		foreach (TimerCallback callback in callbacks) {
+			callback.onUpdate(step);
+		}
 	}
 
     public void addCallback(TimerCallback callback)
@@ -72,7 +79,9 @@ public class Timer : MonoBehaviour {
 
     public interface TimerCallback
     {
-        bool onTime(int i); 
+        bool onTime(int i);
+		void onTick ();
+		void onUpdate (float progress);
     }
 
     public void setAbilityText(string ability, Color color)
