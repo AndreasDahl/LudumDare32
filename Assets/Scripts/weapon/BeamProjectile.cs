@@ -10,8 +10,8 @@ public class BeamProjectile : MonoBehaviour {
 	{
 		if (other.gameObject.tag == "Enemy")
 		{
-			other.gameObject.GetComponent<WalkerAI>().doEffect();
-			other.gameObject.GetComponent<WalkerAI>().death();
+			other.gameObject.GetComponent<EnemyInterface>().doEffect();
+            other.gameObject.GetComponent<EnemyInterface>().death();
 			Destroy(other.gameObject);
 		}
 	}

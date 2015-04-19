@@ -154,11 +154,11 @@ public class PlayerControl : MonoBehaviour, Timer.TimerCallback
 
     void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.collider.gameObject.name == "Walker")
+        if (other.collider.gameObject.tag == "Enemy")
         {
             Application.LoadLevel(currentLevel);
         }
-        else if (other.collider.gameObject.name == "BoostPowerUp(Clone)")
+        else if (other.collider.gameObject.tag == "PowerUp")
         {
             weapons[nextAbilityNr] = other.collider.gameObject;
             abilityQue.sprite = weapons[nextAbilityNr].GetComponent<Weapon>().getAbilityIcon();
