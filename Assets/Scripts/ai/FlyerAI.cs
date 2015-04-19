@@ -4,7 +4,7 @@ using System.Collections;
 public class FlyerAI : MonoBehaviour, EnemyInterface
 {
     public GameObject effect;
-    public GameObject pickUp;
+    public GameObject[] pickUps = new GameObject[6];
     public int direction = -1;
 
     // Update is called once per frame
@@ -29,7 +29,7 @@ public class FlyerAI : MonoBehaviour, EnemyInterface
     public void death()
     {
         //if (Random.Range(0, 9) > 7)
-            Instantiate(pickUp, this.gameObject.transform.position, Quaternion.identity);
+        Instantiate(pickUps[Random.Range(0, 5)], this.gameObject.transform.position, Quaternion.identity);
         FindObjectOfType<PlayerControl>().increaseScore();
     }
 

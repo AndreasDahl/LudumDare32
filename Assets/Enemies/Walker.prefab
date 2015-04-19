@@ -103,7 +103,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   effect: {fileID: 170462, guid: e543fa84e75315f4a91f63fc081518eb, type: 2}
-  pickUp: {fileID: 110878, guid: 4f185f05a3081d849af0823ef882fffe, type: 2}
+  pickUps:
+  - {fileID: 110878, guid: 4f185f05a3081d849af0823ef882fffe, type: 2}
+  - {fileID: 116122, guid: d10ed009b5915834b8efc2c170ba8f1f, type: 2}
+  - {fileID: 128606, guid: ca934af32b36243a3906feed4e6beda5, type: 2}
+  - {fileID: 128606, guid: ca934af32b36243a3906feed4e6beda5, type: 2}
+  - {fileID: 116122, guid: d10ed009b5915834b8efc2c170ba8f1f, type: 2}
+  - {fileID: 110878, guid: 4f185f05a3081d849af0823ef882fffe, type: 2}
   direction: 1
 --- !u!1001 &100100000
 Prefab:
