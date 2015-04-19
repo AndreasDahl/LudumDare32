@@ -5,7 +5,7 @@ public class Burst : Weapon {
 	public float lifetime;
 	public AudioClip weaponSound;
     public AudioClip pickUpSound;
-	public float lifetimeLeft;
+
     public Sprite icon;
 
 
@@ -13,17 +13,14 @@ public class Burst : Weapon {
 	{
 		base.fire (owner);
 
-		GameObject go =(GameObject) Instantiate(this.gameObject, owner.transform.position + new Vector3(0f, 0f, 10f) , Quaternion.identity);
-		go.transform.parent = owner.transform;
-		lifetimeLeft = lifetime;
+        GameObject go = (GameObject) Resources.Load("Sphere");
+        go.GetComponent<BurstEffect>().lifetimeLeft = lifetime;
+        Instantiate(go, owner.transform.position + new Vector3(0f, 0f, 10f), Quaternion.identity);
 	}
 
 	void Update()
 	{
-		lifetimeLeft -= Time.deltaTime;
-		if (lifetimeLeft <= 0) {
-			Destroy(this.gameObject);
- 	   }
+
 	}
 	
 	override public Color getPulseColor() {
