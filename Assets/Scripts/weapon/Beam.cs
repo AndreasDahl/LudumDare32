@@ -11,15 +11,7 @@ public class Beam : Weapon {
 
     private string name = "Beam";
 	
-	void OnTriggerStay2D(Collider2D other)
-	{
-        if (other.gameObject.tag == "Enemy")
-        {
-            other.gameObject.GetComponent<WalkerAI>().doEffect();
-            other.gameObject.GetComponent<WalkerAI>().death();
-			Destroy(other.gameObject);
-		}
-	}
+
 	
 	override public void fire(GameObject owner)
 	{
@@ -27,7 +19,7 @@ public class Beam : Weapon {
 
 		GameObject go =(GameObject) Instantiate(this.gameObject, owner.transform.position , Quaternion.identity);
 		go.transform.parent = owner.transform;
-        go.transform.position += new Vector3(0, 0, 10f); //25.30f
+        go.transform.position += new Vector3(0f, 0f, 10f);
 		lifetime = LIFETIME;
 	}
 
