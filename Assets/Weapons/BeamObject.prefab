@@ -115,6 +115,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponSound: {fileID: 8300000, guid: 9b3aa350f3fb2424489da6e85c53628a, type: 3}
+  pickUpSound: {fileID: 0}
+  icon: {fileID: 21300000, guid: 9eb8a3125504e2540984de90364169ad, type: 3}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

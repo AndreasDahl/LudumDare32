@@ -7,6 +7,7 @@ public class Boost : Weapon {
 	public float Velocity = 40f;
     public AudioClip pickUpSound;
     private string name = "Boost";
+    public Sprite icon;
 	override public void fire(GameObject owner)
 	{
 		base.fire (owner);
@@ -17,7 +18,7 @@ public class Boost : Weapon {
 	}
 
 	override public Color getPulseColor() {
-        return new Color(0f, 1f, 0f, 2f);
+        return new Color(0f, 1f, 0f, 0.4f);
 	}
 
 	override public AudioClip getAudioclip()
@@ -34,5 +35,10 @@ public class Boost : Weapon {
     public override AudioClip getPickUpAudioclip()
     {
         return pickUpSound;
+    }
+
+    public override Sprite getAbilityIcon()
+    {
+        return icon;
     }
 }

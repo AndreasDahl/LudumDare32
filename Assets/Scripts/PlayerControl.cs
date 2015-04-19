@@ -16,13 +16,18 @@ public class PlayerControl : MonoBehaviour, Timer.TimerCallback
     public AudioSource audioPlayer;
     public AudioClip goalSound;
     public Image GrooveBar;
+    public Image abilityQue;
+    public Sprite defaultIcon;
+    public Image[] abilityQueWheel = new Image[6];
     private string currentLevel = "level1";
     private float nextLevelDelay = 1f, nextLevelDelayStart = 0f;
+    int nextAbilityNr;
 
     void Start(){
         this.gameObject.SetActive(true);
         hasPlayed = false;
         timer.addCallback(this);
+        abilityQueWheel[2].sprite = weapons[2].GetComponent<Weapon>().getAbilityIcon();
     }
 
 	void OnDestroy() {
@@ -78,25 +83,27 @@ public class PlayerControl : MonoBehaviour, Timer.TimerCallback
         else if(grounded)
         {
             GetComponent<Rigidbody2D>().velocity = new Vector2(0f, GetComponent<Rigidbody2D>().velocity.y);
-            GrooveBar.fillAmount -= 0.005f;
-            if (GrooveBar.fillAmount <= 0)
-            {
-                Application.LoadLevel(currentLevel);
-            }
+            //GrooveBar.fillAmount -= 0.005f;
+            //if (GrooveBar.fillAmount <= 0)
+            //{
+            //    Application.LoadLevel(currentLevel);
+            //}
         }
 	}
 
     bool Timer.TimerCallback.onTime(int i)
     {
-        int x = i+1;
-        if (x >= 10)
-            x -= 10;
-        if (weapons[x] != null)
+        int nextAbilityNr = i + 1;
+        if (nextAbilityNr >= 6)
+            nextAbilityNr -= 6;
+        if (weapons[nextAbilityNr] != null)
         {
-            timer.setAbilityText(weapons[x].GetComponent<Weapon>().getAbilityName(), weapons[x].GetComponent<Weapon>().getPulseColor());
+            abilityQue.sprite = weapons[nextAbilityNr].GetComponent<Weapon>().getAbilityIcon();
+            timer.setAbilityText(weapons[nextAbilityNr].GetComponent<Weapon>().getAbilityName(), weapons[nextAbilityNr].GetComponent<Weapon>().getPulseColor());
         }
         else
         {
+            abilityQue.sprite = defaultIcon;
             timer.setAbilityText("", new Color());
         }
         if (weapons[i] != null)
@@ -116,8 +123,10 @@ public class PlayerControl : MonoBehaviour, Timer.TimerCallback
         }
         else if (other.collider.gameObject.name == "BoostPowerUp(Clone)")
         {
-            weapons[1] = other.gameObject;
-            weapons[6] = other.gameObject;
+            weapons[nextAbilityNr] = other.collider.gameObject;
+            abilityQue.sprite = weapons[nextAbilityNr].GetComponent<Weapon>().getAbilityIcon();
+            timer.setAbilityText(weapons[nextAbilityNr].GetComponent<Weapon>().getAbilityName(), weapons[nextAbilityNr].GetComponent<Weapon>().getPulseColor());
+            abilityQueWheel[nextAbilityNr].sprite = weapons[nextAbilityNr].GetComponent<Weapon>().getAbilityIcon();
             audioPlayer.PlayOneShot(other.gameObject.GetComponent<Weapon>().getPickUpAudioclip());
             other.gameObject.SetActive(false);
         }
