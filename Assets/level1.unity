@@ -766,7 +766,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 478770, guid: 2ff01aeabd36ae44ab662bec018f8245, type: 2}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2ff01aeabd36ae44ab662bec018f8245, type: 2}
@@ -1750,7 +1750,7 @@ MonoBehaviour:
   timer: {fileID: 442282807}
   weapons:
   - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 158996, guid: 3587c5ce0f95a4001b1cf2b96e20c10a, type: 2}
   - {fileID: 0}
   - {fileID: 183148, guid: 583ed29bf89134d9d80e1269bd862ea6, type: 2}
   - {fileID: 0}
