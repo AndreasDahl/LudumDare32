@@ -2,22 +2,12 @@
 using System.Collections;
 
 public class Burst : Weapon {
-	public float growth = 0.2f;
-	public float lifetime = 0.3f;
+	public float lifetime;
 	public AudioClip weaponSound;
     public AudioClip pickUpSound;
-	private static float lifetimeLeft;
+	public float lifetimeLeft;
     public Sprite icon;
 
-	void OnTriggerStay2D(Collider2D other)
-	{
-		if (other.gameObject.tag == "Enemy")
-		{
-            other.gameObject.GetComponent<EnemyInterface>().doEffect();
-            other.gameObject.GetComponent<EnemyInterface>().death();
-			Destroy(other.gameObject);
-		}
-	}
 
 	override public void fire(GameObject owner)
 	{
@@ -30,13 +20,10 @@ public class Burst : Weapon {
 
 	void Update()
 	{
-		if (lifetimeLeft > 0f) {
-			lifetimeLeft -= Time.deltaTime;
-			this.gameObject.transform.localScale += new Vector3(growth, growth, growth);
-			if (lifetimeLeft <= 0) {
-				Destroy(this.gameObject);
-     	   }
-        }
+		lifetimeLeft -= Time.deltaTime;
+		if (lifetimeLeft <= 0) {
+			Destroy(this.gameObject);
+ 	   }
 	}
 	
 	override public Color getPulseColor() {
