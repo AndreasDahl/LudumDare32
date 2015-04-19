@@ -2,7 +2,6 @@
 using System.Collections;
 
 public class Burst : Weapon {
-    private string name = "Burst";
 	public float growth = 0.2f;
 	public float lifetime = 0.3f;
 	public AudioClip weaponSound;
@@ -49,7 +48,7 @@ public class Burst : Weapon {
 
     public override string getAbilityName()
     {
-        return name;
+        return "Burst";
     }
 
     public override AudioClip getPickUpAudioclip()
