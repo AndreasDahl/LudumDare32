@@ -9,6 +9,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 455628}
   - 114: {fileID: 11400106}
+  - 120: {fileID: 12029370}
   m_Layer: 0
   m_Name: DashWeapon
   m_TagString: Untagged
@@ -43,6 +44,72 @@ MonoBehaviour:
   speed: 40
   pickUpSound: {fileID: 8300000, guid: 4752da484a903f847bfbdfdd49bb686f, type: 3}
   icon: {fileID: 21300000, guid: 74d8abb86725dea48b94e1b25999b5ec, type: 3}
+  lifeLeft: .219999999
+  points:
+  - {x: 8.77640438, y: -24.0189285, z: -10}
+  - {x: 6.99631357, y: -21.1405525, z: -10}
+  - {x: 5.56084156, y: -20.9674301, z: -10}
+  - {x: 6.65480089, y: -21.3676643, z: -10}
+  - {x: 4.0267992, y: -21.1093102, z: -10}
+  - {x: 5.93000031, y: -20.9385967, z: -10}
+  - {x: 6.33160305, y: -22.5258942, z: -10}
+  - {x: 5.60280561, y: -20.9056683, z: -10}
+  - {x: -2, y: -21.2801628, z: -10}
+  - {x: 5.00744057, y: -22.2377167, z: -10}
+  - {x: 1.08319962, y: -20.8887749, z: -10}
+  - {x: 6.53683758, y: -21.3578758, z: -10}
+  - {x: 1.87040257, y: -24.0189285, z: -10}
+  - {x: 2.25676942, y: -22.9288216, z: -10}
+  - {x: 4.1171999, y: -20.9382591, z: -10}
+  - {x: 2.26009893, y: -24.0189571, z: -10}
+  - {x: 1.8624202, y: -20.9053383, z: -10}
+  - {x: .649845243, y: -21.4813995, z: -10}
+  - {x: -3.3955791, y: -21.859354, z: -10}
+  - {x: 8.69440079, y: -21.1055984, z: -10}
+  - {x: 7.25752449, y: -21.3691902, z: -10}
+  - {x: 7.53232908, y: -24.0189285, z: -10}
+  - {x: 5.48522854, y: -23.7530766, z: -10}
+  - {x: -.646303177, y: -24.0189285, z: -10}
+  - {x: 14.5848017, y: -24.0189285, z: -10}
+  - {x: 7.59109354, y: -23.9535961, z: -10}
+  line: {fileID: 0}
+--- !u!120 &12029370
+LineRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 111672}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 682af1c6eb4fd7847801d71f8736794e, type: 2}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 1
+  m_ReflectionProbeUsage: 1
+  m_ProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_ImportantGI: 0
+  m_AutoUVMaxDistance: .5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_Positions:
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 1}
+  m_Parameters:
+    startWidth: 1
+    endWidth: 1
+    m_StartColor:
+      serializedVersion: 2
+      rgba: 37375
+    m_EndColor:
+      serializedVersion: 2
+      rgba: 4278221823
+  m_UseWorldSpace: 1
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

@@ -11,6 +11,7 @@ GameObject:
   - 33: {fileID: 3389846}
   - 23: {fileID: 2389642}
   - 58: {fileID: 5891460}
+  - 114: {fileID: 11444610}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -114,11 +115,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 641986c78ac8e45b1807c7335a271939, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  growth: .5
   lifetime: .439999998
   weaponSound: {fileID: 8300000, guid: 7ee2e8881cedfc24db9577ca6ddc8091, type: 3}
   pickUpSound: {fileID: 8300000, guid: 4752da484a903f847bfbdfdd49bb686f, type: 3}
+  lifetimeLeft: .439999998
   icon: {fileID: 21300000, guid: 9142c91b7e196d641889c71a030760a1, type: 3}
+--- !u!114 &11444610
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 129896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7915312718d44d4cb8fa26642977aef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  growth: .300000012
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

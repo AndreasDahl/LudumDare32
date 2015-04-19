@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Dash : Weapon {
 	private const float lifetime = 0.22f;
@@ -8,27 +9,48 @@ public class Dash : Weapon {
 	public float speed = 40f;
 	public AudioClip pickUpSound;
     public Sprite icon;
-	private static float lifeLeft;
+	public float lifeLeft;
+	public List<Vector3> points;
+	public LineRenderer line;
 
 	override public void fire(GameObject owner)
 	{
 		base.fire (owner);
 
-		Instantiate (this.gameObject);
-
+		GameObject go = (GameObject)Instantiate (this.gameObject, owner.transform.position + new Vector3(0f, 0f, 0f) , Quaternion.identity);
+		go.transform.parent = owner.transform;
+		
 		bool faceRight = owner.GetComponent<PlayerControl>().faceRight;
 		owner.GetComponent<PlayerControl>().dashing = true;
 		Vector2 v = owner.GetComponent<Rigidbody2D> ().velocity;
 
 		owner.GetComponent<Rigidbody2D> ().velocity = new Vector2 (faceRight ? speed : -speed, v.y * 0.3f);
 		lifeLeft = lifetime;
+
+		points.Add (owner.gameObject.transform.position);
 	}
 
+	void Start() {
+		points = new List<Vector3>();
+
+		line = gameObject.GetComponent<LineRenderer>();
+		
+		line.material = (Material) Resources.Load("rings");
+	}
+	
 	void Update() {
 		lifeLeft -= Time.deltaTime;
 		if (lifeLeft < 0f) {
-			FindObjectOfType<PlayerControl>().dashing = false;
-			Destroy(this.gameObject);
+			FindObjectOfType<PlayerControl> ().dashing = false;
+			Destroy (this.gameObject);
+		} else {
+			points.Add(this.gameObject.transform.position);
+			if (points.Count > 1) {
+				line.SetVertexCount(points.Count);
+				for (int i = 0; i < points.Count; i++) {
+					line.SetPosition(i, points[i]);
+				}
+			}
 		}
 	}
 
