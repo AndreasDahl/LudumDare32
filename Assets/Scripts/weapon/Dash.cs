@@ -11,7 +11,6 @@ public class Dash : Weapon {
     public Sprite icon;
 	public float lifeLeft;
 	public List<Vector3> points;
-	public LineRenderer line;
 
 	override public void fire(GameObject owner)
 	{
@@ -32,10 +31,6 @@ public class Dash : Weapon {
 
 	void Start() {
 		points = new List<Vector3>();
-
-		line = gameObject.GetComponent<LineRenderer>();
-		
-		line.material = (Material) Resources.Load("rings");
 	}
 	
 	void Update() {
@@ -46,6 +41,7 @@ public class Dash : Weapon {
 		} else {
 			points.Add(this.gameObject.transform.position);
 			if (points.Count > 1) {
+				LineRenderer line = this.gameObject.GetComponent<LineRenderer>();
 				line.SetVertexCount(points.Count);
 				for (int i = 0; i < points.Count; i++) {
 					line.SetPosition(i, points[i]);

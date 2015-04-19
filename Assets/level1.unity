@@ -1753,7 +1753,7 @@ MonoBehaviour:
   - {fileID: 158996, guid: 3587c5ce0f95a4001b1cf2b96e20c10a, type: 2}
   - {fileID: 0}
   - {fileID: 183148, guid: 583ed29bf89134d9d80e1269bd862ea6, type: 2}
-  - {fileID: 0}
+  - {fileID: 144618, guid: f0693433eab81406686333a0e482f480, type: 2}
   - {fileID: 111672, guid: d7af966c95e5e48d0a705ae5f6599a47, type: 2}
   audioPlayer: {fileID: 1074508249}
   goalSound: {fileID: 8300000, guid: 13bcbc31b01786c408488356c4cd9277, type: 3}
