@@ -1,47 +1,47 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &128606
+--- !u!1 &146018
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 406076}
-  - 33: {fileID: 3344106}
-  - 23: {fileID: 2371650}
-  - 58: {fileID: 5869538}
-  - 114: {fileID: 11455466}
+  - 4: {fileID: 442462}
+  - 33: {fileID: 3343290}
+  - 23: {fileID: 2319394}
+  - 58: {fileID: 5851090}
+  - 114: {fileID: 11400128}
   m_Layer: 0
-  m_Name: SpeedPowerUp
+  m_Name: DashPowerUp
   m_TagString: PowerUp
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &406076
+--- !u!4 &442462
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 128606}
+  m_GameObject: {fileID: 146018}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.78999996, y: -2.22000003, z: 0}
+  m_LocalPosition: {x: -4.3499999, y: -20.9300003, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!23 &2371650
+--- !u!23 &2319394
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 128606}
+  m_GameObject: {fileID: 146018}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 89f1f64e235d4044582b5a831a861303, type: 2}
+  - {fileID: 2100000, guid: 45b2057d5a45e44c29807138b98f6fd4, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -55,37 +55,41 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
---- !u!33 &3344106
+--- !u!33 &3343290
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 128606}
+  m_GameObject: {fileID: 146018}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!58 &5869538
+--- !u!58 &5851090
 CircleCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 128606}
+  m_GameObject: {fileID: 146018}
   m_Enabled: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: .5
---- !u!114 &11455466
+--- !u!114 &11400128
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 128606}
-  m_Enabled: 1
+  m_GameObject: {fileID: 146018}
+  m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42600ed53889547d5be15338a4f440ff, type: 3}
+  m_Script: {fileID: 11500000, guid: 802bdea6ef71b44759b36b1f4f37d3a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponSound: {fileID: 8300000, guid: 60dbc33d4ddce054ba22765e71b11f5e, type: 3}
+  speed: 40
+  pickUpSound: {fileID: 8300000, guid: 4752da484a903f847bfbdfdd49bb686f, type: 3}
+  icon: {fileID: 21300000, guid: 74d8abb86725dea48b94e1b25999b5ec, type: 3}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -95,5 +99,5 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 128606}
+  m_RootGameObject: {fileID: 146018}
   m_IsPrefabParent: 1

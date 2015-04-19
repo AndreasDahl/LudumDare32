@@ -27,8 +27,6 @@ public class FlyerAI : MonoBehaviour, EnemyInterface
 
     public void death()
     {
-        //if (Random.Range(0, 9) > 7)
-        Instantiate(pickUps[Random.Range(0, 5)], this.gameObject.transform.position, Quaternion.identity);
         FindObjectOfType<PlayerControl>().increaseScore();
     }
 
