@@ -1,13 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class WalkerAI : MonoBehaviour {
+public class WalkerAI : MonoBehaviour, EnemyInterface
+{
     public GameObject effect;
     public GameObject pickUp;
     public int direction = -1;
-	// Use this for initialization
-	void Start () {
-	}
 	
 	// Update is called once per frame
     void FixedUpdate()
@@ -30,7 +28,16 @@ public class WalkerAI : MonoBehaviour {
 
     public void death()
     {
-        Instantiate(pickUp, this.gameObject.transform.position, Quaternion.identity);
+        if(Random.Range(0,9) > 7)
+            Instantiate(pickUp, this.gameObject.transform.position, Quaternion.identity);
         FindObjectOfType<PlayerControl>().increaseScore();
+    }
+
+    void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.tag == "Enemy")
+        {
+            flip();
+        }
     }
 }

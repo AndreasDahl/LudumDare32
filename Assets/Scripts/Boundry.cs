@@ -7,8 +7,8 @@ public class Boundry : MonoBehaviour {
     void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.name != "Cube" && other.gameObject.name != "Floor") {
-			if (other.gameObject.tag == "Enemy") { 
-				other.gameObject.GetComponent<WalkerAI> ().flip ();
+			if (other.gameObject.tag == "Enemy") {
+                other.gameObject.GetComponent<EnemyInterface>().flip();
 			} else if (other.gameObject.tag == "Projectile") {
 				Destroy (other.gameObject);
 			}

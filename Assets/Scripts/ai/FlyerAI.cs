@@ -1,22 +1,40 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class FlyerAI : MonoBehaviour {
+public class FlyerAI : MonoBehaviour, EnemyInterface
+{
+    public GameObject effect;
+    public GameObject pickUp;
+    public int direction = -1;
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		this.transform.position += new Vector3 (0.0f, 0.0f, 0.0f);
-	}
+    // Update is called once per frame
+    void FixedUpdate()
+    {
+        if (direction * GetComponent<Rigidbody2D>().velocity.x < 1)
+            GetComponent<Rigidbody2D>().AddForce(Vector2.up * direction * 0.1f * 50);
+    }
 
-	void OnTriggerEnter2D(Collider2D other) {
-		if (other.name == "Cube") {
-			Destroy(other.transform.root.gameObject);
-		}
-		Debug.Log (other.name);
-	}
+    public void doEffect()
+    {
+        GameObject go = (GameObject)Instantiate(effect, this.gameObject.transform.position, Quaternion.identity);
+        go.GetComponent<Circle>().doExpand();
+        go.GetComponent<Circle>().doDestroy(0.1f);
+    }
+
+    public void flip()
+    {
+        direction *= -1;
+    }
+
+    public void death()
+    {
+        //if (Random.Range(0, 9) > 7)
+            Instantiate(pickUp, this.gameObject.transform.position, Quaternion.identity);
+        FindObjectOfType<PlayerControl>().increaseScore();
+    }
+
+    void OnCollisionEnter2D(Collision2D other)
+    {
+            flip();
+    }
 }
