@@ -22,12 +22,18 @@ public class PlayerControl : MonoBehaviour, Timer.TimerCallback
     private string currentLevel = "level1";
     private float nextLevelDelay = 1f, nextLevelDelayStart = 0f;
     int nextAbilityNr;
+    public Text score;
+    public int scoreInt = 0;
 
     void Start(){
         this.gameObject.SetActive(true);
         hasPlayed = false;
         timer.addCallback(this);
-        abilityQueWheel[2].sprite = weapons[2].GetComponent<Weapon>().getAbilityIcon();
+        for (int i = 0; i < 6; i++)
+        {
+            if (weapons[i] != null)
+                abilityQueWheel[i].sprite = weapons[i].GetComponent<Weapon>().getAbilityIcon();
+        }
     }
 
 	void OnDestroy() {
@@ -96,6 +102,8 @@ public class PlayerControl : MonoBehaviour, Timer.TimerCallback
         int nextAbilityNr = i + 1;
         if (nextAbilityNr >= 6)
             nextAbilityNr -= 6;
+        abilityQueWheel[i].color = new Color(1f,1f,1f,0.5f);
+        abilityQueWheel[nextAbilityNr].color = new Color(1f, 1f, 1f, 1f);
         if (weapons[nextAbilityNr] != null)
         {
             abilityQue.sprite = weapons[nextAbilityNr].GetComponent<Weapon>().getAbilityIcon();
@@ -136,5 +144,11 @@ public class PlayerControl : MonoBehaviour, Timer.TimerCallback
             currentLevel = other.gameObject.GetComponent<goal>().getNextLevel();
             hasPlayed = true;
         }
+    }
+
+    public void increaseScore()
+    {
+        scoreInt++;
+        score.text = scoreInt.ToString();
     }
 }

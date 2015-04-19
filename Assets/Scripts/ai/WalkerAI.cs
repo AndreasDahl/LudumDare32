@@ -31,5 +31,6 @@ public class WalkerAI : MonoBehaviour {
     public void death()
     {
         Instantiate(pickUp, this.gameObject.transform.position, Quaternion.identity);
+        FindObjectOfType<PlayerControl>().increaseScore();
     }
 }
