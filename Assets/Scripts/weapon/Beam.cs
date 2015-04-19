@@ -8,7 +8,7 @@ public class Beam : Weapon {
 
     public AudioClip weaponSound;
     public AudioClip pickUpSound;
-
+    public Sprite icon;
     private string name = "Beam";
 	
 
@@ -24,7 +24,7 @@ public class Beam : Weapon {
 	}
 
 	override public Color getPulseColor() {
-        return new Color(1f, 1f, 0f, 2f);
+        return new Color(1f, 1f, 0f, 0.4f);
 	}
 	
 	void Update()
@@ -49,5 +49,10 @@ public class Beam : Weapon {
     public override AudioClip getPickUpAudioclip()
     {
         return pickUpSound;
+    }
+
+    public override Sprite getAbilityIcon()
+    {
+        return icon;
     }
 }

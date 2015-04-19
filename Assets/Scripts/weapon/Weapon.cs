@@ -14,4 +14,6 @@ public abstract class Weapon : MonoBehaviour
     public abstract AudioClip getPickUpAudioclip();
 
     public abstract string getAbilityName();
+
+    public abstract Sprite getAbilityIcon();
 }

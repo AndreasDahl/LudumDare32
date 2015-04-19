@@ -7,12 +7,14 @@ public class Burst : Weapon {
 	public AudioClip weaponSound;
     public AudioClip pickUpSound;
 	private static float lifetimeLeft;
+    public Sprite icon;
 
 	void OnTriggerStay2D(Collider2D other)
 	{
 		if (other.gameObject.name == "Walker")
 		{
 			other.gameObject.GetComponent<WalkerAI>().doEffect();
+            other.gameObject.GetComponent<WalkerAI>().death();
 			Destroy(other.gameObject);
 		}
 	}
@@ -38,7 +40,7 @@ public class Burst : Weapon {
 	}
 	
 	override public Color getPulseColor() {
-		return new Color (1f, 0f, 1f);
+        return new Color(1f, 0f, 1f, 0.4f);
 	}
 	
 	override public AudioClip getAudioclip()
@@ -54,5 +56,10 @@ public class Burst : Weapon {
     public override AudioClip getPickUpAudioclip()
     {
         return pickUpSound;
+    }
+
+    public override Sprite getAbilityIcon()
+    {
+        return icon;
     }
 }

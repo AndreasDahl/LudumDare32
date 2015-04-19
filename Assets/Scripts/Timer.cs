@@ -4,10 +4,9 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 
 public class Timer : MonoBehaviour {
-    public static int STAGES = 10;
+    public static int STAGES = 6;
     
 	public float speedMultiplier = 1f;
-    public Text uiTimer;
     public Text nextAbility;
     public Circle circle;
     public int currentTrigger;
@@ -25,7 +24,6 @@ public class Timer : MonoBehaviour {
             currentTrigger = 0;
         }
  
-        uiTimer.text = currentTrigger.ToString();
         displayCircle = false;
         foreach (TimerCallback callback in callbacks)
         {
@@ -36,7 +34,6 @@ public class Timer : MonoBehaviour {
 
 	// Use this for initialization
 	void Awake () {
-        uiTimer.text = "0";
         callbacks = new List<TimerCallback>();
         playing = false;
 	}
