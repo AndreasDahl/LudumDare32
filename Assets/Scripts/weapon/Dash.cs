@@ -22,15 +22,11 @@ public class Dash : Weapon {
 
 		owner.GetComponent<Rigidbody2D> ().velocity = new Vector2 (faceRight ? speed : -speed, v.y * 0.3f);
 		lifeLeft = lifetime;
-
-		Debug.Log ("FIRE");
 	}
 
 	void Update() {
-		Debug.Log ("Life left " + lifeLeft);
 		lifeLeft -= Time.deltaTime;
 		if (lifeLeft < 0f) {
-			Debug.Log ("Stop Dashing");
 			FindObjectOfType<PlayerControl>().dashing = false;
 			Destroy(this.gameObject);
 		}
