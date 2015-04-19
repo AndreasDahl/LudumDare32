@@ -8,7 +8,6 @@ public class BeamProjectile : MonoBehaviour {
 
 	void OnTriggerStay2D(Collider2D other)
 	{
-		Debug.Log ("TRIGGER");
 		if (other.gameObject.tag == "Enemy")
 		{
 			other.gameObject.GetComponent<WalkerAI>().doEffect();

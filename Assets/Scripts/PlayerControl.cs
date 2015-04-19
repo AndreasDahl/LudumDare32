@@ -27,6 +27,7 @@ public class PlayerControl : MonoBehaviour, Timer.TimerCallback
 
     void Start(){
         this.gameObject.SetActive(true);
+        int nextAbilityNr = 0; 
         hasPlayed = false;
         timer.addCallback(this);
         for (int i = 0; i < 6; i++)
@@ -99,7 +100,7 @@ public class PlayerControl : MonoBehaviour, Timer.TimerCallback
 
     bool Timer.TimerCallback.onTime(int i)
     {
-        int nextAbilityNr = i + 1;
+        nextAbilityNr = i + 1;
         if (nextAbilityNr >= 6)
             nextAbilityNr -= 6;
         abilityQueWheel[i].color = new Color(1f,1f,1f,0.5f);
