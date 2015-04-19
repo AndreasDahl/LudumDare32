@@ -18,6 +18,8 @@ public class PlayerControl : MonoBehaviour, Timer.TimerCallback
     public Image GrooveBar;
     private string currentLevel = "level1";
     private float nextLevelDelay = 1f, nextLevelDelayStart = 0f;
+	public bool dashing = false;
+	public bool faceRight = true;
 
     void Start(){
         this.gameObject.SetActive(true);
@@ -62,27 +64,30 @@ public class PlayerControl : MonoBehaviour, Timer.TimerCallback
         }
         if (h != -1 && h != 1 && h != 0)
             h = 0;
+		if (h != 0)
+			faceRight = h >= 0; // Set Facing
         if (h != 0)
         {
 
 		    // If the player is changing direction (h has a different sign to velocity.x) or hasn't reached maxSpeed yet...
-		    if(h * GetComponent<Rigidbody2D>().velocity.x < maxSpeed)
+		    if(!dashing && h * GetComponent<Rigidbody2D>().velocity.x < maxSpeed)
 			    // ... add a force to the player.
 			    GetComponent<Rigidbody2D>().AddForce(Vector2.right * h * moveForce);
-
-		    // If the player's horizontal velocity is greater than the maxSpeed...
-		    if(Mathf.Abs(GetComponent<Rigidbody2D>().velocity.x) > maxSpeed)
+		
+		    // If the player's horizontal velocity is greater than the maxSpeed and not dashing...
+		    if(!dashing && Mathf.Abs(GetComponent<Rigidbody2D>().velocity.x) > maxSpeed)
 			    // ... set the player's velocity to the maxSpeed in the x axis.
 			    GetComponent<Rigidbody2D>().velocity = new Vector2(Mathf.Sign(GetComponent<Rigidbody2D>().velocity.x) * maxSpeed, GetComponent<Rigidbody2D>().velocity.y);
         }
         else if(grounded)
         {
-            GetComponent<Rigidbody2D>().velocity = new Vector2(0f, GetComponent<Rigidbody2D>().velocity.y);
-            GrooveBar.fillAmount -= 0.005f;
-            if (GrooveBar.fillAmount <= 0)
-            {
-                Application.LoadLevel(currentLevel);
-            }
+			if (!dashing)
+            	GetComponent<Rigidbody2D>().velocity = new Vector2(0f, GetComponent<Rigidbody2D>().velocity.y);
+//            GrooveBar.fillAmount -= 0.005f;
+//            if (GrooveBar.fillAmount <= 0)
+//            {
+//                Application.LoadLevel(currentLevel);
+//            }
         }
 	}
 
