@@ -7,6 +7,7 @@ public class Dash : Weapon {
 	public AudioClip weaponSound;
 	public float speed = 40f;
 	public AudioClip pickUpSound;
+    public Sprite icon;
 	private static float lifeLeft;
 
 	override public void fire(GameObject owner)
@@ -54,4 +55,9 @@ public class Dash : Weapon {
 	{
 		return pickUpSound;
 	}
+
+    public override Sprite getAbilityIcon()
+    {
+        return icon;
+    }
 }
